@@ -1,0 +1,14 @@
+{
+    "name": "doghouseagency/phing-drupal-tests",
+    "description": "A collection of automated testing targets for Phing.",
+    "keywords": [
+        "phing",
+        "drupal"
+    ],
+    "homepage": "https://github.com/DoghouseMedia/phing-drupal-tests",
+    "license": "GPL-2.0+",
+    "support": {
+        "issues": "https://github.com/DoghouseMedia/phing-drupal-tests",
+        "source": "https://github.com/DoghouseMedia/phing-drupal-tests"
+    }
+}
