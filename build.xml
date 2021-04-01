@@ -12,6 +12,7 @@
   <property name="tests.db"           value="/tmp/tests-db.sqlite" />
   <property name="tests.dburl"        value="sqlite://localhost//tmp/tests-db.sqlite" />
   <property name="tests.suite"        value="minimal" />
+  <property name="tests.verbose"      value="false" />
 
   <!-- ## Targets -->
 
@@ -20,14 +21,23 @@
     <if>
       <ispropertytrue property="tests.enabled"/>
       <then>
+        <if>
+          <ispropertytrue property="tests.verbose"/>
+          <then>
+            <property name="arg.verbose"      value="--verbose" />
+          </then>
+          <else>
+            <property name="arg.verbose"      value="" />
+          </else>
+        </if>
         <!-- Start the webserver just for running the browser tests -->
         <exec command="php -S ${tests.localaddress} -t ${tests.docroot}" spawn="true"/>
         <!-- Run the tests -->
-        <exec command="php ${tests.bin} --php php -- --url ${tests.localurl} --sqlite ${tests.db} --dburl ${tests.dburl} --suppress-deprecations ${tests.suite}"
+        <exec command="php ${tests.bin} --php php -- ${arg.verbose} --url ${tests.localurl} --sqlite ${tests.db} --dburl ${tests.dburl} --suppress-deprecations ${tests.suite}"
               passthru="true"
               checkreturn="true" />
         <!-- Cleanup any created test files -->
-        <exec command="php ${tests.bin} --php php -- --sqlite ${tests.db} --clean --dburl ${tests.dburl} --verbose"/>
+        <exec command="php ${tests.bin} --php php -- --sqlite ${tests.db} --clean --dburl ${tests.dburl}"/>
         <!-- Stop the webserver for running the tests -->
         <exec command="pkill -f 'php -S ${tests.localaddress} -t ${tests.docroot}'"/>
       </then>
