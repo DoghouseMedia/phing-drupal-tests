@@ -7,7 +7,7 @@
   <property name="tests.enabled"      value="false" />
   <property name="tests.bin"          value="${app.root}/core/scripts/run-tests.sh" />
   <property name="tests.localaddress" value="0.0.0.0:8888" />
-  <property name="tests.localurl"     value="http://localhost:8888/" />
+  <property name="tests.localurl"     value="http://cli:8888/" />
   <property name="tests.docroot"      value="docroot" />
   <property name="tests.db"           value="/tmp/tests-db.sqlite" />
   <property name="tests.dburl"        value="sqlite://localhost//tmp/tests-db.sqlite" />
